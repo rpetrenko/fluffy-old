@@ -1,0 +1,24 @@
+doctype html
+html
+    head
+        title= title
+        link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css')
+        link(rel='stylesheet', href='/stylesheets/style.css')
+    body
+        header
+            h1 Fluffy Rockstar
+        .container.sidebar
+            block sidebar
+                ul.nav.nav-pills.nav-justified
+                    each menuitem in [{title: 'Home',url:'/'},{title:'Characters',url:'/characters'},{title:'Drawings',url:'drawings'},{title:'About',url:'about'},{title:'Contact',url:'/contact'}]
+                        if (menuitem.title == title)
+                            li.active
+                                a.active(href=menuitem.url) #{menuitem.title}
+                        else
+                            li
+                                a(href=menuitem.url) #{menuitem.title}
+        .main-content
+            block content
+        footer.footer.navbar-fixed-bottom
+            p Created with nodejs, express, bootstrap and jade
+
